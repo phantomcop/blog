@@ -20,6 +20,15 @@
     <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
+<div class="field">
+  <%#= f.label "Category" %>
+  <%# Category.all.each do |category| %>
+    <%#= check_box_tag 'article[category_ids][]', category.id, 
+      @article.category_ids.include?(category.id), id: dom_id(category) %>
+      <%#= label_tag dom_id(category), category.name, class: "check_box_lable" %>
+      <%# end %>
+      <%= f.collection_check_boxes :category_ids, Category.all, :id, :name   %>
+</div>
 
   <div class="field">
     <%= f.label :excerpt %>
@@ -37,6 +46,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_or_cancel(f) %>
   </div>
 <% end %>

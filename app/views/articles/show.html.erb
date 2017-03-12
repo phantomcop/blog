@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -23,7 +23,14 @@
 <p>
   <strong>Published at:</strong>
   <%= @article.published_at %>
-</p>
+</p> -->
+<%= render @article %>
+<h3>Comment</h3>
+<div id="comments">
+  <%= render @article.comments %>
+</div>
+
+<%= render file: 'comments/new' %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
