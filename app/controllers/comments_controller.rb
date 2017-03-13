@@ -1,13 +1,19 @@
 class CommentsController < ApplicationController
-  before_filter :load_article, except: :destroy
-  before_filter :authenticate, only: :destroy
+  before_action :load_article
+  before_action :authenticate, only: :destroy
 
   def create
     @comment = @article.comments.new(comment_params)
     if @comment.save
-      redirect_to @article, notice: 'Thank for your comment'
+      respond_to do |format|
+        format.html { redirect_to @article, notice: 'Thank for your comment' }
+        format.js { render 'create.js.erb'}
+      end
     else
-      redirect_to @article, alert: 'Unable to add comment'
+       respond_to do |format|
+        format.html {redirect_to @article, alert: 'Unable to add comment'}
+        format.js { render 'fail_create.js.erb'}
+      end
     end
   end
 
@@ -15,7 +21,10 @@ class CommentsController < ApplicationController
     @article = current_user.articles.find(params[:article_id])
     @comment = @article.comments.find(params[:id])
     @comment.destroy
-    redirect_to @article, notice: 'Comment Deleted'
+    respond_to do |format|
+        format.html { redirect_to @article, notice: 'Comment Deleted' }
+        format.js
+    end
   end
 
   private
