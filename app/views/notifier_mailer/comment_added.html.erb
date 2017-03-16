@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+<p>This is the testing to notify you: Some one has commented in your <%= @article.title %></p>
+<p> Let check it <%= link_to @article.title, article_url(@article,
+   host: 'localhost:3000') %></p>
+</body>
+</html>

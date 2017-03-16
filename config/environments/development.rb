@@ -31,6 +31,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  # Gmail SMTP server setup 
+  ActionMailer::Base.smtp_settings = {
+    address: "smtp.gmail.com",
+    enable_starttls_auto: true,
+    port: 587,
+    authentication: :plain,
+    user_name: 'anhbiet0101@gmail.com',
+    password: '092315att'
+  }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -51,4 +60,5 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
 end

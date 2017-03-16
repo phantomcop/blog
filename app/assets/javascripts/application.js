@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on('turbolinks:load', function() {
+  $('.persistent').click(function (e) {
+    e.preventDefault();
+  })
+  $('#notify_friend_link').click(function(e){
+        e.preventDefault();
+        $('#notify_friend_form').slideDown();
+  })
+})
+
+

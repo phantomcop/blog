@@ -25,6 +25,11 @@
   <%#= @article.published_at %>
 </p> -->
 <%= render @article %>
+
+  <%= link_to 'Email a friend', '#',id: 'notify_friend_link' %> 
+  <%= render 'notify_friend' %>
+
+
 <h3>Comment</h3>
 <div id="comments">
   <%= render @article.comments %>
@@ -32,3 +37,4 @@
 
 <%= link_to "new comment", new_article_comment_path(@article, format: :js),
   remote: true, id: 'new_comment_link' %>
+
