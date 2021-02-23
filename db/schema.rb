@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170307160309) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -26,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170307160309) do
   create_table "articles_categories", id: false, force: :cascade do |t|
     t.integer "article_id"
     t.integer "category_id"
-    t.index ["article_id"], name: "index_articles_categories_on_article_id"
-    t.index ["category_id"], name: "index_articles_categories_on_category_id"
+    t.index ["article_id"], name: "index_articles_categories_on_article_id", using: :btree
+    t.index ["category_id"], name: "index_articles_categories_on_category_id", using: :btree
   end
 
   create_table "categories", force: :cascade do |t|
